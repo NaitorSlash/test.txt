@@ -1,0 +1,18 @@
+[Unit]
+Description=gtp-stromung-aufnehmen
+Wants=network-online.target
+After=syslog.target network.target network-online.target
+
+[Service]
+ExecStart=/opt/glosav/gtp-stromung-aufnehmen/bin/gtp-stromung-aufnehmen configurations-1-1.json constraint.json
+WorkingDirectory=/opt/glosav/gtp-stromung-aufnehmen/bin
+User=root
+StartLimitInterval=0
+StartLimitBurst=0
+Restart=always
+RestartSec=2
+TimeoutStopSec=3
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
